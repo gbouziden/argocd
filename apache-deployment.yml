@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: apache
-        image: my-apache-app
+        image: gbouziden/apache-app:latest
         ports:
         - containerPort: 80
