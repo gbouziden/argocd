@@ -3,10 +3,9 @@ kind: Service
 metadata:
   name: guestbook
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
   - port: 80
     targetPort: 3000
-    nodePort: 30080  # You can specify a port or let Kubernetes assign one
   selector:
     app: guestbook
