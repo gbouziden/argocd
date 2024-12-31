@@ -16,6 +16,16 @@ spec:
     spec:
       containers:
       - name: guestbook
-        image: gcr.io/google-samples/guestbook:v3
+        image: nginxdemos/hello
         ports:
-        - containerPort: 3000
+        - containerPort: 80
+        command: ["nginx", "-g", "daemon off;"]
+        args: ["-c", "/etc/nginx/nginx.conf"]
+        volumeMounts:
+        - name: config-volume
+          mountPath: /etc/nginx/nginx.conf
+          subPath: nginx.conf
+      volumes:
+      - name: config-volume
+        configMap:
+          name: nginx-config
